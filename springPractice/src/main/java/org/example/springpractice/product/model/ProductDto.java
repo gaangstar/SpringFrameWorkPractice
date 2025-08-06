@@ -9,7 +9,7 @@ public class ProductDto
         private Integer price;
         private Integer description ;
         
-        public ProductReq from(Product Entity)
+        public static  ProductReq from(Product Entity)
         {
             ProductDto.ProductReq dto = new ProductDto.ProductReq();
             dto.setIdx(Entity.getIdx);
