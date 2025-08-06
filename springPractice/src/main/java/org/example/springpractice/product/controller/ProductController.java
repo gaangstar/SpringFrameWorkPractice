@@ -17,7 +17,6 @@ public class ProductController {
     }
 
     //상품 등록
-    //dfgf
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody ProductDto.ProductReq dto) {
         productService.register(dto);
