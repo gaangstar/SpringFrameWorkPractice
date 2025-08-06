@@ -4,6 +4,8 @@ import org.example.springpractice.Board.model.BoardDto;
 import org.example.springpractice.Board.repository.BoardRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BoardService {
@@ -15,7 +17,7 @@ public class BoardService {
 
     //게시글 등록
     public void register(BoardDto.BoardReq dto) {
-        boardRepository.save(dto);
+        boardRepository.save(dto.toEntity());
     }
 
     //게시글 상세 조회
