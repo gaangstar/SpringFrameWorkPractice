@@ -31,4 +31,12 @@ public class BoardService {
                 .toList();
     }
 
+    //게시글 검색
+    public List<BoardDto.BoardRes> search(String title) {
+        return boardRepository.findByTitle(title)
+                .stream()
+                .map(BoardDto.BoardRes::from)
+                .toList();
+    }
+
 }
