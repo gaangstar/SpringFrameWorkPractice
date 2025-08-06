@@ -1,5 +1,6 @@
 package org.example.springpractice.Menu.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.example.springpractice.Menu.model.MenuDto;
 import org.example.springpractice.Menu.service.MenuService;
 import org.springframework.http.ResponseEntity;
@@ -8,15 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/menu")
 public class MenuController
 {
     private final MenuService menuService;
-
-    public MenuController(MenuService menuService) {
-        this.menuService = menuService;
-    }
-
 
     // 메뉴 등록
     @PostMapping("/register")
@@ -27,6 +24,7 @@ public class MenuController
         return ResponseEntity.status(200).body("등록 완료");
     }
 
+    // 메뉴 목록 조회
     @GetMapping("/list")
     public ResponseEntity<List<MenuDto.MenuRes>> list()
     {
@@ -35,6 +33,7 @@ public class MenuController
         return ResponseEntity.status(200).body(result);
     }
 
+    // 메뉴 상세 조회
     @GetMapping("/read")
     public ResponseEntity<MenuDto.MenuRes> read(Integer idx)
     {
@@ -43,6 +42,7 @@ public class MenuController
         return ResponseEntity.status(200).body(result);
     }
 
+    // 메뉴 검색
     @GetMapping("/search")
     public ResponseEntity<List<MenuDto.MenuRes>> search(String name)
     {

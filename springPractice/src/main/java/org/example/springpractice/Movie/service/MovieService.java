@@ -1,5 +1,6 @@
 package org.example.springpractice.Movie.service;
 
+import lombok.RequiredArgsConstructor;
 import org.example.springpractice.Movie.model.MovieDto;
 import org.example.springpractice.Movie.repository.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -7,14 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MovieService
 {
     private final MovieRepository movieRepository;
-
-    public MovieService(MovieRepository movieRepository)
-    {
-        this.movieRepository = movieRepository;
-    }
 
     //영화 등록
     public void register(MovieDto.MovieReq dto) {

@@ -4,7 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Menu
 {
@@ -14,15 +22,6 @@ public class Menu
     private String name;
     private Integer price;
     private Integer calorie;
-
-    public Menu() {
-    }
-
-    public Menu(String name, Integer price, Integer calorie) {
-        this.name = name;
-        this.price = price;
-        this.calorie = calorie;
-    }
 
     public Integer getIdx()
     {

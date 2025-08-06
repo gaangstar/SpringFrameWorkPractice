@@ -3,12 +3,11 @@ package org.example.springpractice.Lecture.controller;
 import org.example.springpractice.Lecture.model.LectureDto;
 import org.example.springpractice.Lecture.service.LectureService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/lecture")
 public class LectureController
 {
