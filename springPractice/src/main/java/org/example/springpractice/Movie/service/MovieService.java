@@ -28,7 +28,7 @@ public class MovieService
     }
 
     //영화 목록 조회
-    public List<MovieDto.MovieRes> list(MovieDto.MovieReq dto) {
+    public List<MovieDto.MovieRes> list() {
         return movieRepository.findAll()
                 .stream()
                 .map(MovieDto.MovieRes::from)

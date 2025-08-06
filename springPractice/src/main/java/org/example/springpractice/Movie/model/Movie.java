@@ -14,7 +14,16 @@ public class Movie
 
     private String title;
     private String description;
-    private String time;
+    private Integer time;
+
+    public Movie() {
+    }
+
+    public Movie(String title, String description, Integer time) {
+        this.title = title;
+        this.description = description;
+        this.time= time;
+    }
 
     public Integer getId() {
         return id;
@@ -40,11 +49,11 @@ public class Movie
         this.description = description;
     }
 
-    public String getTime() {
+    public Integer getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 }
