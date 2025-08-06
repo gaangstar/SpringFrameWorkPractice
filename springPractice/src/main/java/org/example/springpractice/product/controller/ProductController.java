@@ -1,5 +1,6 @@
 package org.example.springpractice.product.controller;
 
+import org.example.springpractice.product.model.ProductDto;
 import org.example.springpractice.product.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
