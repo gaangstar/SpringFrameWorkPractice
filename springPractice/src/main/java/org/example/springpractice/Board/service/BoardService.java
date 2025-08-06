@@ -15,7 +15,7 @@ public class BoardService {
 
     //게시글 등록
     public void register(BoardDto.BoardReq dto) {
-        boardRepository.save(dto);
+        boardRepository.save(dto.toEntity());
     }
 
     //게시글 상세 조회
