@@ -19,7 +19,7 @@ public class BoardService {
     }
 
     //게시글 상세 조회
-    public BoardDto.BoardRes read(Long id) {
+    public BoardDto.BoardRes read(Integer id) {
         return boardRepository.findById(id).map(BoardDto.BoardRes::from).orElse(null);
     }
 
