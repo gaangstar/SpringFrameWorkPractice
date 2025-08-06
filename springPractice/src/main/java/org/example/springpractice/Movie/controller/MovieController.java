@@ -1,5 +1,6 @@
 package org.example.springpractice.Movie.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.example.springpractice.Movie.model.MovieDto;
 import org.example.springpractice.Movie.service.MovieService;
 import org.example.springpractice.product.model.ProductDto;
@@ -9,14 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/movie")
 public class MovieController
 {
     private final MovieService movieService;
 
-    public MovieController(MovieService movieService) {
-        this.movieService = movieService;
-    }
 
     // 영화 등록
     @PostMapping("/register")
