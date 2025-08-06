@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public class LectureService
 {
+    //
     private LectureRepository lectureRepository;
     
     public LectureService(LectureRepository lectureRepository)
