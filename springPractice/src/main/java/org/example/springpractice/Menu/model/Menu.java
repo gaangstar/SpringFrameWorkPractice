@@ -14,7 +14,16 @@ public class Menu
     private String name;
     private Integer price;
     private Integer calorie;
-    
+
+    public Menu() {
+    }
+
+    public Menu(String name, Integer price, Integer calorie) {
+        this.name = name;
+        this.price = price;
+        this.calorie = calorie;
+    }
+
     public Integer getIdx()
     {
         return idx;
