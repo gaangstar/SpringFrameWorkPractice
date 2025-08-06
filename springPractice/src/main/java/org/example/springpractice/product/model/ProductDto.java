@@ -20,16 +20,19 @@ public class ProductDto {
         }
       
     }
-
+    
     @Builder
-    public static class ProductRes {
+    @Getter
+    public static class ProductRes
+    {
         private Long id;
         private String name;
         private Integer price;
         private String description;
-
-        public static ProductRes from(Product product) {
-            ProductDto.ProductRes res =  ProductRes.builder()
+        
+        public static ProductRes from(Product product)
+        {
+            ProductDto.ProductRes res = ProductRes.builder()
                     .id(product.getId())
                     .name(product.getName())
                     .price(product.getPrice())
@@ -38,6 +41,6 @@ public class ProductDto {
             
             return res;
         }
-
+        
     }
 }
