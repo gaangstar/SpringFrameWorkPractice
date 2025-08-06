@@ -1,69 +1,45 @@
 package org.example.springpractice.Board.model;
 
+import lombok.Builder;
+import lombok.Getter;
+
 public class BoardDto
 {
+    @Getter
     public static class BoardReq {
         private String title;
         private String content;
 
         public Board toEntity() {
-            return new Board(title, content);
+            Board entity = Board.builder()
+                    .title(this.title)
+                    .content(this.content)
+                    .build();
+            return entity;
         }
 
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
+        
     }
-
-    public static class BoardRes {
+    
+    @Getter
+    @Builder
+    public static class BoardRes
+    {
         private Integer idx;
         private String title;
         private String content;
-
-        public static BoardRes from(Board board) {
-            BoardRes res = new BoardRes();
-
-            res.idx = board.getIdx();
-            res.title = board.getTitle();
-            res.content = board.getContent();
-
+        
+        public static BoardRes from(Board board)
+        {
+            BoardRes res = BoardRes.builder()
+                    .idx(board.getIdx())
+                    .title(board.getTitle())
+                    .content(board.getContent())
+                    .build();
+            
             return res;
         }
-
-        public Integer getIdx() {
-            return idx;
-        }
-
-        public void setIdx(Integer idx) {
-            this.idx = idx;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
+        
+        
     }
 }
