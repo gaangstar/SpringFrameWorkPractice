@@ -1,75 +1,85 @@
 package org.example.springpractice.product.model;
 
-public class ProductDto
-{
-    public static class ProductReq
-    {
-        private Integer idx;
+public class ProductDto {
+    public static class ProductReq {
         private String name;
         private Integer price;
-        private Integer description ;
-        
-        public static  ProductReq from(Product Entity)
-        {
-            ProductDto.ProductReq dto = new ProductDto.ProductReq();
-            dto.setIdx(Entity.getIdx);
-            dto.setName(Entity.getName);
-            dto.setPrice(Entity.getPrice);
-            dto.setDescription(Entity.getDescription);
-            
-            return dto;
+        private String description;
+
+        public Product toEntity() {
+            return new Product(name, price, description);
         }
-        
-        public Product toEntity()
-        {
-            Product entity = new Product();
-            entity.setName(this.name);
-            entity.setPrice(this.price);
-            entity.setDescription(this.description );
-            
-            return entity;
-        }
-        
-        
-        public Integer getIdx()
-        {
-            return idx;
-        }
-        
-        public void setIdx(Integer idx)
-        {
-            this.idx = idx;
-        }
-        
-        public String getName()
-        {
+
+        public String getName() {
             return name;
         }
-        
-        public void setName(String name)
-        {
+
+        public void setName(String name) {
             this.name = name;
         }
-        
-        public Integer getPrice()
-        {
+
+        public Integer getPrice() {
             return price;
         }
-        
-        public void setPrice(Integer price)
-        {
+
+        public void setPrice(Integer price) {
             this.price = price;
         }
-        
-        public Integer getDescription()
-        {
+
+        public String getDescription() {
             return description;
         }
-        
-        public void setDescription(Integer description)
-        {
+
+        public void setDescription(String description) {
             this.description = description;
         }
     }
-    
+
+    public static class ProductRes {
+        private Long id;
+        private String name;
+        private Integer price;
+        private String description;
+
+        public static ProductRes from(Product product) {
+            ProductRes res = new ProductRes();
+            res.id = product.getId();
+            res.name = product.getName();
+            res.price = product.getPrice();
+            res.description = product.getDescription();
+            return res;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getPrice() {
+            return price;
+        }
+
+        public void setPrice(Integer price) {
+            this.price = price;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+    }
 }

@@ -16,36 +16,31 @@ public class ProductController {
         this.productService = productService;
     }
 
-    //상품 등록
+    // 상품 등록
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody ProductDto.ProductReq dto) {
+    public ResponseEntity<String> register(@RequestBody ProductDto.ProductReq dto) {
         productService.register(dto);
-
-        return ResponseEntity.status(200).body("등록 성공");
+        return ResponseEntity.ok("등록 성공");
     }
 
-    //상품 상세 조회
+    // 상품 상세 조회
     @GetMapping("/read")
-    public ResponseEntity read(Integer idx) {
-        ProductDto.ProductReq response = productService.read(idx);
-
-        return ResponseEntity.status(200).body(response);
+    public ResponseEntity<ProductDto.ProductRes> read(@RequestParam Long idx) {
+        ProductDto.ProductRes response = productService.read(idx);
+        return ResponseEntity.ok(response);
     }
 
-
-    //상품 목록 조회
+    // 상품 목록 조회
     @GetMapping("/list")
-    public ResponseEntity list() {
-        List<ProductDto.ProductReq> response = productService.list();
-
-        return ResponseEntity.status(200).body(response);
+    public ResponseEntity<List<ProductDto.ProductRes>> list() {
+        List<ProductDto.ProductRes> response = productService.list();
+        return ResponseEntity.ok(response);
     }
 
-    //상품 검색
+    // 상품 검색
     @GetMapping("/search")
-    public ResponseEntity search(String name) {
-        List<ProductDto.ProductReq> response = productService.search(name);
-
-        return ResponseEntity.status(200).body(response);
+    public ResponseEntity<List<ProductDto.ProductRes>> search(@RequestParam String name) {
+        List<ProductDto.ProductRes> response = productService.search(name);
+        return ResponseEntity.ok(response);
     }
 }
