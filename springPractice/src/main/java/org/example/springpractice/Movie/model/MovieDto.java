@@ -21,6 +21,7 @@ public class MovieDto
     }
 
     @Builder
+    @Getter
     public static class MovieRes {
         private Integer id;
         private String title;
