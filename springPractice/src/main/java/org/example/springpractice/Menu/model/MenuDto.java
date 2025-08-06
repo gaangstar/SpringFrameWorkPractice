@@ -1,8 +1,12 @@
 package org.example.springpractice.Menu.model;
 
+import lombok.Builder;
+import lombok.Getter;
+
 public class MenuDto
 {
 
+    @Getter
     public static class MenuReq
     {
         private String name;
@@ -10,34 +14,16 @@ public class MenuDto
         private Integer calorie;
 
         public Menu toEntity() {
-            return new Menu(name, price, calorie);
+            return Menu.builder()
+                    .name(name)
+                    .price(price)
+                    .calorie(calorie)
+                    .build();
             }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
-
-        public Integer getCalorie() {
-            return calorie;
-        }
-
-        public void setCalorie(Integer calorie) {
-            this.calorie = calorie;
-        }
     }
 
+    @Builder
+    @Getter
     public static class MenuRes {
         private Integer idx;
         private String name;
@@ -45,45 +31,12 @@ public class MenuDto
         private Integer calories;
 
         public static MenuRes from(Menu menu) {
-            MenuRes res = new MenuRes();
-
-            res.idx = menu.getIdx();
-            res.name = menu.getName();
-            res.price = menu.getPrice();
-            res.calories = menu.getCalorie();
-
-            return res;
-        }
-        public Integer getIdx() {
-            return idx;
-        }
-
-        public void setIdx(Integer idx) {
-            this.idx = idx;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
-        
-        public Integer getCalories() {
-            return calories;
-        }
-
-        public void setCalories(Integer calories) {
-            this.calories = calories;
+            return MenuRes.builder()
+                    .idx(menu.getIdx())
+                    .name(menu.getName())
+                    .price(menu.getPrice())
+                    .calories(menu.getCalorie())
+                    .build();
         }
     }
 }
