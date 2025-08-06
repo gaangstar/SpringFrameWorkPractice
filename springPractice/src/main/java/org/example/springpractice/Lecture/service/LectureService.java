@@ -1,46 +1,44 @@
 package org.example.springpractice.Lecture.service;
 
+import lombok.RequiredArgsConstructor;
+import org.example.springpractice.Lecture.model.Lecture;
 import org.example.springpractice.Lecture.model.LectureDto;
 import org.example.springpractice.Lecture.repository.LectureRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class LectureService
 {
-    //
-    private LectureRepository lectureRepository;
+    private final LectureRepository lectureRepository;
     
-    public LectureService(LectureRepository lectureRepository)
+    public void register(LectureDto.LectureReq dto)
     {
-        this.lectureRepository = lectureRepository;
+        lectureRepository.save(dto.toEntity());
     }
     
-    public void register(LectureDto.register dto)
+    public LectureDto.LectureRes read(Integer idx)
     {
-        lectureRepository.save(dto);
-    }
-    
-    public List<LectureDto.lectureRes> list()
-    {
-        List<LectureDto.lectureRes> result = ectureRepository.findAll();
+        Optional<Lecture> result = lectureRepository.findById(idx);
         
-        return result.stream().map(LectureDto.lectureRes::from).toList();
+        return result.map(LectureDto.LectureRes::from).orElse(null);
     }
     
-    public List<LectureDto.lectureRes> list(String title)
+    public List<LectureDto.LectureRes> list()
     {
-        List<LectureDto.lectureRes> result = ectureRepository.findByTitle(title);
+        List<Lecture> result = lectureRepository.findAll();
         
-        return result.stream().map(LectureDto.lectureRes::from).toList();
+        return result.stream().map(LectureDto.LectureRes::from).toList();
     }
     
-    public List<LectureDto.lectureRes> read(Integer idx)
+    public List<LectureDto.LectureRes> search(String title)
     {
-        List<LectureDto.lectureRes> result = ectureRepository.findByid(idx);
+        List<Lecture> result = lectureRepository.findByTitle(title);
         
-        return result.stream().map(LectureDto.lectureRes::from).toList();
+        return result.stream().map(LectureDto.LectureRes::from).toList();
     }
     
     

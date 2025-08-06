@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/lecture")
 public class LectureController
@@ -39,7 +41,7 @@ public class LectureController
 
     //강의 검색
     @GetMapping("/search")
-    public ResponseEntity<List<LectureDto.LectureRes>> search(@RequestParm String title) {
+    public ResponseEntity<List<LectureDto.LectureRes>> search(@RequestParam String title) {
         List<LectureDto.LectureRes> response = lectureService.search(title);
         return ResponseEntity.ok(response);
     }

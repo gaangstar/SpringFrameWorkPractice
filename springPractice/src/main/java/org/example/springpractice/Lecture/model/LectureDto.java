@@ -1,7 +1,11 @@
 package org.example.springpractice.Lecture.model;
 
+import lombok.Builder;
+import lombok.Getter;
+
 public class LectureDto
 {
+    @Getter
     public static class LectureReq {
         private String title;
         private String description;
@@ -9,43 +13,18 @@ public class LectureDto
         private Integer price;
 
         public Lecture toEntity() {
-            return new Lecture(title, description, totalTime, price);
+            return Lecture.builder()
+                    .title(title)
+                    .description(description)
+                    .time(totalTime)
+                    .price(price)
+                    .build();
         }
 
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public Integer getTotalTime() {
-            return totalTime;
-        }
-
-        public void setTotalTime(Integer totalTime) {
-            this.totalTime = totalTime;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
     }
 
-
+    @Builder
+    @Getter
     public static class LectureRes {
         private Integer id;
         private String title;
@@ -54,54 +33,15 @@ public class LectureDto
         private Integer price;
 
         public static LectureRes from(Lecture lecture) {
-            LectureRes res = new LectureRes();
-            res.id = lecture.getId();
-            res.title = lecture.getTitle();
-            res.description = lecture.getDescription();
-            res.totalTime = lecture.getTotalTime();
-            res.price = lecture.getPrice();
 
-            return res;
+            return LectureRes.builder()
+                    .id(lecture.getId())
+                    .title(lecture.getTitle())
+                    .description(lecture.getDescription())
+                    .totalTime(lecture.getTime())
+                    .price(lecture.getPrice())
+                    .build();
         }
 
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public Integer getTotalTime() {
-            return totalTime;
-        }
-
-        public void setTotalTime(Integer totalTime) {
-            this.totalTime = totalTime;
-        }
-
-        public Integer getPrice() {
-            return price;
-        }
-
-        public void setPrice(Integer price) {
-            this.price = price;
-        }
     }
 }
