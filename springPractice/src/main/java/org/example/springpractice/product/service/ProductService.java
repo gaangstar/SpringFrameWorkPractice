@@ -23,7 +23,7 @@ public class ProductService {
     
     public List<ProductDto.ProductReq> list()
     {
-        List<ProductDto.ProductReq> result = productRepository.list();
+        List<Product> result = productRepository.list();
         
         
         return result.stream().map(ProductDto.ProductReq::from).toList();
